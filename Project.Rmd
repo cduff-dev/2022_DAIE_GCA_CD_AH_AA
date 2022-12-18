@@ -1,0 +1,72 @@
+---
+title: "Data Analytics CA Pair Project - VR Jungian Sandplay"
+author: "Charlie Duff, , "
+date: "December, 2022"
+output:
+  pdf_document:
+    toc: yes
+  html_document:
+    code_folding: show
+    toc: yes
+    toc_float: no
+    number_sections: yes
+    df_print: paged
+  word_document:
+    toc: yes
+---
+# Abstract
+
+## Aim and Rationale
+The aim and rationale of this project is to formulate a single hypothesis based on a set of data we were given on an experiment conducted to attempt to determine the effectiveness of use of VR technology in Jungian Sandbox therapy, compare the effectiveness of the approaches based on the data we were provided, and cleaning up any data that requires cleanup. 
+
+## Participants and setting
+Participants of this experiment were young adults aged between 18 - 25 years old with no exact ages of the participants recorded. 150 participants were recorded in this study with an equal amount of male and female participants recorded. (Male = 75 / Female = 75)
+Participants were broken into 3 groups using random sampling.These groups were Control (traditional CBT, w/ No VR), Static (Non-animated model content, w/ VR), Animated (Animated model content, w/ VR)
+
+## Experiment design
+
+## Results gathering
+Results of the experiment were tracked in an excel spreadsheet detailing the gender and test group of each participant(Control,Static,Animated) along with their CPSS (Child PTSD Symptom Scale) and OR (Observer Rating) pre and post treatment.
+
+## Major findings
+
+## Findings/Implecations
+
+# Introduction
+
+## Topics And content
+
+## Rationale
+The Rationale behind this experiment was to determine if using VR technology in a Jungian Sandbox setting could be beneficial in reducing the PTSD levels in patients. 
+## Hypothesis
+
+# Method
+
+## Participants
+Participants of this experiment were young adults aged between 18 - 25 years old with no exact ages of the participants recorded. 150 participants were recorded in this study with an equal amount of male and female participants recorded. (Male = 75 / Female = 75)
+Participants were broken into 3 groups using random sampling.These groups were Control (traditional CBT, w/ No VR), Static (Non-animated model content, w/ VR), Animated (Animated model content, w/ VR)
+
+## Design
+
+## Materials
+
+## Procedure
+
+# Results
+
+## Descriptive statistics
+
+## Inferential statistics
+
+## Statistical tests
+
+## Magnitude and direction of results
+
+# Discussion
+
+# References
+N
+
+```{r}
+plot(cars)
+```
