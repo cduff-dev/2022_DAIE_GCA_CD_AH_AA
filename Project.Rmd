@@ -13,7 +13,14 @@ output:
     df_print: paged
   word_document:
     toc: yes
+    
+    always_allow_html: true
 ---
+```{r Load Data, echo=FALSE}
+file_name = "data/daie_ca3_data_8.csv"
+patient_data <- read.csv(file_name)
+```
+
 # Abstract
 
 ## Aim and Rationale
@@ -53,7 +60,55 @@ Participants were broken into 3 groups using random sampling.These groups were C
 ## Procedure
 
 # Results
+```{r table, echo=FALSE}
+knitr::kable(patient_data,
+  align = c('c'), # a vector with 'c', 'l', or 'r' values
+  digits = 2,
+  caption = "Patient Data")
 
+pre_trial_cpss_mean <- mean(patient_data$pre_trial_cpss)
+
+knitr::kable(patient_data[!is.na(patient_data$pre_trial_cpss),],
+  align = c('c'), # a vector with 'c', 'l', or 'r' values
+  digits = 2,
+  caption = "Patient Data (NO NA)")
+
+```
+
+
+```{r tableMeans, include=FALSE}
+pre_trial_cpss_mean <- mean(patient_data$pre_trial_cpss,na.rm = TRUE )
+post_trial_cpss_mean <- mean(patient_data$post_trial_cpss)
+pre_trial_or_mean <- mean(patient_data$pre_trial_or)
+post_trial_or_mean <- mean(patient_data$post_trial_or)
+
+pre_trial_cpss_std <- sd(patient_data$pre_trial_cpss,na.rm = TRUE )
+post_trial_cpss_std <- sd(patient_data$post_trial_cpss)
+pre_trial_or_std<- sd(patient_data$pre_trial_or)
+post_trial_or_std <- sd(patient_data$post_trial_or)
+
+```
+ Pre trial cpss mean = `r pre_trial_cpss_mean`
+ 
+ Post trial cpss mean = `r post_trial_cpss_mean`
+ 
+ Pre trial or mean = `r pre_trial_or_mean`
+ 
+ Post trial or mean = `r post_trial_or_mean`
+ 
+ 
+ Pre trial cpss standard deviation = `r pre_trial_cpss_std`
+ 
+ Post trial cpss standard deviation = `r post_trial_cpss_std`
+ 
+ Pre trial or standard deviation = `r pre_trial_or_std`
+ 
+ Post trial or standard deviation = `r post_trial_or_std`
+ 
+```{r Summary, echo=FALSE}
+summary(patient_data)
+
+```
 ## Descriptive statistics
 
 ## Inferential statistics
@@ -65,8 +120,7 @@ Participants were broken into 3 groups using random sampling.These groups were C
 # Discussion
 
 # References
-N
+Help with getting mean of data while data is missing from column *[Stack Overflow](https://stackoverflow.com/questions/23163863/mean-of-a-column-in-a-data-frame-given-the-columns-name)
 
-```{r}
-plot(cars)
-```
+Removing Na's by Column *[GeekforGeeks](https://www.geeksforgeeks.org/remove-rows-with-na-in-one-column-of-r-dataframe/)
+
