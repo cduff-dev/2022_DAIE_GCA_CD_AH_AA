@@ -13,8 +13,8 @@ output:
     df_print: paged
     word_document:
     toc: yes
-    
     always_allow_html: true
+    
 ---
 ```{r Load Data, echo=FALSE}
 file_name = "data/daie_ca3_data_8.csv"
@@ -22,7 +22,6 @@ patient_data <- read.csv(file_name)
 ```
 
 # Abstract
-Test text TEST TEST TEST
 
 ## Aim and Rationale
 The aim and rationale of this project is to formulate a single hypothesis based on a set of data we were given on an experiment conducted to attempt to determine the effectiveness of use of VR technology in Jungian Sandbox therapy, compare the effectiveness of the approaches based on the data we were provided, and cleaning up any data that requires cleanup. 
@@ -38,6 +37,7 @@ Results of the experiment were tracked in an excel spreadsheet detailing the gen
 
 ## Major findings
 
+
 ## Findings/Implecations
 
 # Introduction
@@ -47,9 +47,27 @@ Results of the experiment were tracked in an excel spreadsheet detailing the gen
 ## Rationale
 The Rationale behind this experiment was to determine if using VR technology in a Jungian Sandbox setting could be beneficial in reducing the PTSD levels in patients. 
 
-## Hypothesis
-
 # Method
+Upon first analysis of the data, a missing datum was found for participant 100 in their Pre-Trial Self Reported CPSS. Between the group, we discussed our options. Between ourselves, two conflicting ideas emerged - one, that we ignore the missing data and calculate results without it (deletion), and the other that we replace the missing data with a suitable value and proceed with an adjusted dataset (imputation). We decided to proceed with both methods, and to compare both results, to infer the difference between the two.
+
+First we analysed the missing datum to be Missing Completely at Random (MCAR), as being the sole unrecorded datum in the set, we can conclude that it being missing has nothing to do with any other observed variables (data Missing at Random), or missing due to the values themselves (Missing Not at Random). 
+
+We then discussed how we could impute the missing datum. We came up with a variety of potential options based on research and discussion:
+1. Take the mean of all Pre-Trial Self Reported CPSS values. 
+2. Take the median of all Pre-Trial Self Reported CPSS values.
+3. Take the mode of all Pre-Trial Self Reported CPSS values.
+4. Take the mean of all female control Pre-Trial Self Reported CPSS values.
+5. Take the median of all female control Pre-Trial Self Reported CPSS values.
+
+The following values were calculated for each option:
+1. 6.06
+2. 6.09
+3. 6.24
+4. 5.76
+5. 5.82
+
+## Hypothesis
+Our hypothesis was that imputing data would provide results with a more varied outcome than data that was ignored.
 
 ## Participants
 Participants of this experiment were young adults aged between 18 - 25 years old with no exact ages of the participants recorded. 150 participants were recorded in this study with an equal amount of male and female participants recorded. (Male = 75 / Female = 75)
@@ -111,6 +129,8 @@ post_trial_or_std <- sd(patient_data$post_trial_or)
 summary(patient_data)
 
 ```
+## Graphs
+
 ## Descriptive statistics
 
 ## Inferential statistics
@@ -124,5 +144,9 @@ summary(patient_data)
 # References
 Help with getting mean of data while data is missing from column *[Stack Overflow](https://stackoverflow.com/questions/23163863/mean-of-a-column-in-a-data-frame-given-the-columns-name)
 
-Removing Na's by Column *[GeekforGeeks](https://www.geeksforgeeks.org/remove-rows-with-na-in-one-column-of-r-dataframe/)
+Removing Na's by Column *[GeeksforGeeks](https://www.geeksforgeeks.org/remove-rows-with-na-in-one-column-of-r-dataframe/)
+
+How to Handle Missing Data in a Dataset *[freeCodeCamp](https://www.freecodecamp.org/news/how-to-handle-missing-data-in-a-dataset/)
+
+How to Impute Missing Values in R? *[GeeksforGeeks](https://www.geeksforgeeks.org/how-to-impute-missing-values-in-r/)
 
