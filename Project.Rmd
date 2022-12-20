@@ -51,7 +51,7 @@ Results of the experiment were tracked in an excel spreadsheet detailing the gen
 The Rationale behind this experiment was to determine if using VR technology in a Jungian Sandbox setting could be beneficial in reducing the PTSD levels in patients. 
 
 # Method
-Upon first analysis of the data, a missing datum was found for participant 100 in their Pre-Trial Self Reported CPSS. Between the group, we discussed our options. Between ourselves, two conflicting ideas emerged - one, that we ignore the missing data and calculate results without it (deletion), and the other that we replace the missing data with a suitable value and proceed with an adjusted dataset (imputation). We decided to proceed with both methods, and to compare both results, to infer the difference between the two.
+Upon first analysis of the data, a missing datum was found for participant 100 in their Pre-Trial Self Reported CPSS. Between the group, we discussed our options. Between ourselves, two conflicting ideas emerged - one, that we ignore the missing data and calculate results without it (deletion), and the other that we replace the missing data with a suitable value and proceed with an adjusted dataset (imputation). We decided to proceed with imputation using the mean of the column that the missing dataset was relevant to.
 
 First we analysed the missing datum to be Missing Completely at Random (MCAR), as being the sole unrecorded datum in the set, we can conclude that it being missing has nothing to do with any other observed variables (data Missing at Random), or missing due to the values themselves (Missing Not at Random). 
 
@@ -93,35 +93,6 @@ pre_trial_cpss_mean <- mean(patient_data$pre_trial_cpss)
 
 ```
 
-
-```{r tableMeans, include=FALSE}
-pre_trial_cpss_mean <- mean(patient_data$pre_trial_cpss,na.rm = TRUE )
-post_trial_cpss_mean <- mean(patient_data$post_trial_cpss)
-pre_trial_or_mean <- mean(patient_data$pre_trial_or)
-post_trial_or_mean <- mean(patient_data$post_trial_or)
-
-pre_trial_cpss_std <- sd(patient_data$pre_trial_cpss,na.rm = TRUE )
-post_trial_cpss_std <- sd(patient_data$post_trial_cpss)
-pre_trial_or_std<- sd(patient_data$pre_trial_or)
-post_trial_or_std <- sd(patient_data$post_trial_or)
-
-```
- Pre trial cpss mean = `r pre_trial_cpss_mean`
- 
- Post trial cpss mean = `r post_trial_cpss_mean`
- 
- Pre trial or mean = `r pre_trial_or_mean`
- 
- Post trial or mean = `r post_trial_or_mean`
- 
- 
- Pre trial cpss standard deviation = `r pre_trial_cpss_std`
- 
- Post trial cpss standard deviation = `r post_trial_cpss_std`
- 
- Pre trial or standard deviation = `r pre_trial_or_std`
- 
- Post trial or standard deviation = `r post_trial_or_std`
  
 ```{r Summary, echo=FALSE}
 summary(patient_data)
@@ -136,20 +107,90 @@ plot(density(patient_data$pre_trial_or,na.rm = TRUE))
 plot(density(patient_data$post_trial_or,na.rm = TRUE))
 
 
+#CPSS Static, Control, Animated
+plot(patient_data$pre_trial_cpss[1:50] ~ patient_data$post_trial_cpss[1:50], type="p",xlim = c(0,10), ylim = c(0,10), patient_data, main = "Self Reported Data - Static CPSS", xlab = "Pre-Trial Report", ylab = "Post Trial Report")
 
-plot(patient_data$pre_trial_cpss[1:50] ~ patient_data$post_trial_cpss[1:50], type="p",xlim = c(0,10), ylim = c(0,10), patient_data, main = "Self Reported Data - Static", xlab = "Pre-Trial Report", ylab = "Post Trial Report")
+plot(patient_data$pre_trial_cpss[51:100] ~ patient_data$post_trial_cpss[51:100], type="p",xlim = c(0,10), ylim = c(0,10), patient_data, main = "Self Reported Data - Control CPSS", xlab = "Pre-Trial Report", ylab = "Post Trial Report")
 
-plot(patient_data$pre_trial_cpss[51:100] ~ patient_data$post_trial_cpss[51:100], type="p",xlim = c(0,10), ylim = c(0,10), patient_data, main = "Self Reported Data - Control", xlab = "Pre-Trial Report", ylab = "Post Trial Report")
+plot(patient_data$pre_trial_cpss[101:150] ~ patient_data$post_trial_cpss[101:150], type="p",xlim = c(0,10), ylim = c(0,10), patient_data, main = "Self Reported Data - Animated CPSS", xlab = "Pre-Trial Report", ylab = "Post Trial Report")
 
-plot(patient_data$pre_trial_cpss[101:150] ~ patient_data$post_trial_cpss[101:150], type="p",xlim = c(0,10), ylim = c(0,10), patient_data, main = "Self Reported Data - Animated", xlab = "Pre-Trial Report", ylab = "Post Trial Report")
+
+
+#OR Static, Control, Animated
+plot(patient_data$pre_trial_or[1:50] ~ patient_data$post_trial_or[1:50], type="p",xlim = c(0,10), ylim = c(0,10), patient_data, main = "Self Reported Data - Static OR", xlab = "Pre-Trial Report", ylab = "Post Trial Report")
+
+plot(patient_data$pre_trial_or[51:100] ~ patient_data$post_trial_or[51:100], type="p",xlim = c(0,10), ylim = c(0,10), patient_data, main = "Self Reported Data - Control OR", xlab = "Pre-Trial Report", ylab = "Post Trial Report")
+
+plot(patient_data$pre_trial_or[101:150] ~ patient_data$post_trial_or[101:150], type="p",xlim = c(0,10), ylim = c(0,10), patient_data, main = "Self Reported Data - Animated OR", xlab = "Pre-Trial Report", ylab = "Post Trial Report")
 
 ```
 
 ## Descriptive statistics
+```{r DesStats, include=FALSE}
+pre_trial_cpss_meanStatic <- mean(patient_data$pre_trial_cpss[1:50],na.rm = TRUE )
+post_trial_cpss_meanStatic <- mean(patient_data$post_trial_cpss[1:50],na.rm = TRUE )
+
+pre_trial_cpss_meanControl <- mean(patient_data$pre_trial_cpss[51:100],na.rm = TRUE )
+post_trial_cpss_meanControl <- mean(patient_data$post_trial_cpss[51:100],na.rm = TRUE )
+
+pre_trial_cpss_meanAnimated <- mean(patient_data$pre_trial_cpss[101:150],na.rm = TRUE )
+post_trial_cpss_meanAnimated <- mean(patient_data$post_trial_cpss[101:150],na.rm = TRUE )
+
+
+
+pre_trial_or_meanStatic <- mean(patient_data$pre_trial_or[1:50],na.rm = TRUE )
+post_trial_or_meanStatic <- mean(patient_data$post_trial_or[1:50],na.rm = TRUE )
+
+pre_trial_or_meanControl <- mean(patient_data$pre_trial_or[51:100],na.rm = TRUE )
+post_trial_or_meanControl <- mean(patient_data$post_trial_or[51:100],na.rm = TRUE )
+
+pre_trial_or_meanAnimated <- mean(patient_data$pre_trial_or[101:150],na.rm = TRUE )
+post_trial_or_meanAnimated <- mean(patient_data$post_trial_or[101:150],na.rm = TRUE )
+
+
+pre_trial_cpss_std <- sd(patient_data$pre_trial_cpss,na.rm = TRUE )
+post_trial_cpss_std <- sd(patient_data$post_trial_cpss)
+pre_trial_or_std<- sd(patient_data$pre_trial_or)
+post_trial_or_std <- sd(patient_data$post_trial_or)
+
+```
+Static Pre trial cpss mean = `r pre_trial_cpss_meanStatic`
+
+Static Post trial cpss mean = `r post_trial_cpss_meanStatic`
+
+Control Pre trial cpss mean = `r pre_trial_cpss_meanControl`
+
+Control Post trial cpss mean = `r post_trial_cpss_meanControl`
+
+Animated Pre trial cpss mean = `r pre_trial_cpss_meanAnimated`
+
+Animated Post trial cpss mean = `r post_trial_cpss_meanAnimated`
+
+
+Static Pre trial or mean = `r pre_trial_or_meanStatic`
+
+Static Post trial or mean = `r post_trial_or_meanStatic`
+
+Control Pre trial or mean = `r pre_trial_or_meanControl`
+
+Control Post trial or mean = `r post_trial_or_meanControl`
+
+Animated Pre trial or mean = `r pre_trial_or_meanAnimated`
+
+Animated Post trial or mean = `r post_trial_or_meanAnimated`
+
 
 ## Inferential statistics
 
 ## Statistical tests
+```{r Shapiro-Wilk, include=FALSE}
+
+#perform shapiro-wilk test
+result_sw <- shapiro.test(patient_data$pre_trial_cpss)
+result_sw
+```
+
+A `r result_sw$method` was conducted on the pre trial cpss data. From the output obtained we can assume normality as the p-value (p=`r round(result_sw$p.value, 4)`) is greater than 0.05.
 
 ## Magnitude and direction of results
 
@@ -164,3 +205,5 @@ How to Handle Missing Data in a Dataset *[freeCodeCamp](https://www.freecodecamp
 
 How to Impute Missing Values in R? *[GeeksforGeeks](https://www.geeksforgeeks.org/how-to-impute-missing-values-in-r/)
 
+First 10 entries in a bar plot
+*[StackOverflow](https://stackoverflow.com/questions/37524701/how-do-i-barplot-only-the-first-10-entries-in-a-frequency-table-in-r)
