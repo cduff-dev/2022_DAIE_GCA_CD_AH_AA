@@ -74,7 +74,7 @@ Our hypothesis was that imputing data would provide results with a more varied o
 
 ## Participants
 Participants of this experiment were young adults aged between 18 - 25 years old with no exact ages of the participants recorded. 150 participants were recorded in this study with an equal amount of male and female participants recorded. (Male = 75 / Female = 75)
-Participants were broken into 3 groups using random sampling.These groups were Control (traditional CBT, w/ No VR), Static (Non-animated model content, w/ VR), Animated (Animated model content, w/ VR)
+Participants were broken into 3 groups using random sampling. These groups were Control (traditional CBT, w/ No VR), Static (Non-animated model content, w/ VR), Animated (Animated model content, w/ VR)
 
 ## Design
 
