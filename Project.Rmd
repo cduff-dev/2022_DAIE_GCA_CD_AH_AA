@@ -186,11 +186,45 @@ Animated Post trial or mean = `r post_trial_or_meanAnimated`
 ```{r Shapiro-Wilk, include=FALSE}
 
 #perform shapiro-wilk test
-result_sw <- shapiro.test(patient_data$pre_trial_cpss)
-result_sw
+result_sw_ptcpss <- shapiro.test(patient_data$pre_trial_cpss)
+result_sw_ptcpss
+result_sw_postcpss <- shapiro.test(patient_data$post_trial_cpss)
+result_sw_postcpss
+result_sw_ptor <- shapiro.test(patient_data$pre_trial_or)
+result_sw_ptor
+result_sw_postor <- shapiro.test(patient_data$post_trial_or)
+result_sw_postor
+
+
 ```
 
-A `r result_sw$method` was conducted on the pre trial cpss data. From the output obtained we can assume normality as the p-value (p=`r round(result_sw$p.value, 4)`) is greater than 0.05.
+A `r result_sw_ptcpss$method` was conducted on each of the data sets
+
+pre trial CPSS data - `r round(result_sw_ptcpss$p.value, 4)`
+
+post trial CPSS data - `r round(result_sw_postcpss$p.value, 4)`
+
+pre trial OR data - `r round(result_sw_ptor$p.value, 4)`
+
+post trial OR data - `r round(result_sw_postor$p.value, 4)`
+
+
+From the output obtained we can assume normality for the pre and post trial CPSS as the p-value is greater than 0.05 while the OR data fails this normality test.  
+
+```{r Confidence Interval, include=FALSE}
+
+#perform 95% Confidence Interval test
+ci_error_precpss <- qt(0.975,df=length(patient_data$pre_trial_cpss)-1)*sd(patient_data$pre_trial_cpss)/sqrt(length(patient_data$pre_trial_cpss))
+
+ci_error_precpss_left <- mean(patient_data$pre_trial_cpss)-ci_error_precpss
+
+ci_error_precpss_right <- mean(patient_data$pre_trial_cpss)+ci_error_precpss
+
+
+```
+
+95% confidence interval for pre trial CPSS  = (`r ci_error_precpss_left` , `r ci_error_precpss_right` )
+
 
 ## Magnitude and direction of results
 
@@ -207,3 +241,5 @@ How to Impute Missing Values in R? *[GeeksforGeeks](https://www.geeksforgeeks.or
 
 First 10 entries in a bar plot
 *[StackOverflow](https://stackoverflow.com/questions/37524701/how-do-i-barplot-only-the-first-10-entries-in-a-frequency-table-in-r)
+
+Calculate confidence interval *[Cyclismo](https://www.cyclismo.org/tutorial/R/confidence.html)
