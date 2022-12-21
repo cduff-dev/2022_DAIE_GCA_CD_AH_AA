@@ -24,59 +24,60 @@ patient_data$pre_trial_cpss[is.na(patient_data$pre_trial_cpss)] <- mean(patient_
 
 ```
 
+
 # Abstract
 
 ## Aim and Rationale
-The aim and rationale of this project is to formulate a single hypothesis based on a set of data we were given on an experiment conducted to attempt to determine the effectiveness of use of VR technology in Jungian Sandbox therapy, compare the effectiveness of the approaches based on the data we were provided, and cleaning up any data that requires cleanup. 
+The aim and rationale of this project is to formulate a single hypothesis based on a set of data we were given on an experiment conducted to attempt to determine the effectiveness of use of VR technology in Jungian Sandbox therapy, comparing the effectiveness of the approaches based on the data we were provided, and cleaning up any data that requires cleanup. 
 
 ## Participants and setting
-Participants of this experiment were young adults aged between 18 - 25 years old with no exact ages of the participants recorded. 150 participants were recorded in this study with an equal amount of male and female participants recorded. (Male = 75 / Female = 75)
+Participants of this experiment were psychotherapy patients undergoing treatment for PTSD, aged between 18 - 25 years old with no exact ages of the participants recorded. 150 participants were recorded in this study with an equal amount of male and female participants recorded. (Male = 75 / Female = 75)
 Participants were broken into 3 groups using random sampling.These groups were Control (traditional CBT, w/ No VR), Static (Non-animated model content, w/ VR), Animated (Animated model content, w/ VR)
 
 ## Experiment design
+Each patient spent 50 minutes per week for 12 weeks with a therapist, under three testing groups:
+
+**Control:**
+Undergoing traditional CBT with a therapist
+
+**Static:**
+Using the VR app with non-animated model content
+
+**Animated:**
+Using the VR app with animated content. 
+
 
 ## Results gathering
-Results of the experiment were tracked in an excel spreadsheet detailing the gender and test group of each participant(Control,Static,Animated) along with their CPSS (Child PTSD Symptom Scale) and OR (Observer Rating) pre and post treatment.
+Results were tracked in an excel spreadsheet detailing the gender and test group of each participant (Control, Static, Animated) along with their CPSS (Child PTSD Symptom Scale) and OR (Observer Rating) pre and post treatment.
 
 ## Major findings
-
+We found that the average PTSD rating for each testing group decreased after treatment.
 
 ## Findings/Implecations
 
+
 # Introduction
 
-## Topics And content
+## Topic and context
 
 ## Rationale
 The Rationale behind this experiment was to determine if using VR technology in a Jungian Sandbox setting could be beneficial in reducing the PTSD levels in patients. 
 
-# Method
-Upon first analysis of the data, a missing datum was found for participant 100 in their Pre-Trial Self Reported CPSS. Between the group, we discussed our options. Between ourselves, two conflicting ideas emerged - one, that we ignore the missing data and calculate results without it (deletion), and the other that we replace the missing data with a suitable value and proceed with an adjusted dataset (imputation). We decided to proceed with imputation using the mean of the column that the missing dataset was relevant to.
-
-First we analysed the missing datum to be Missing Completely at Random (MCAR), as being the sole unrecorded datum in the set, we can conclude that it being missing has nothing to do with any other observed variables (data Missing at Random), or missing due to the values themselves (Missing Not at Random). 
-
-We then discussed how we could impute the missing datum. We came up with a variety of potential options based on research and discussion:
-1. Take the mean of all Pre-Trial Self Reported CPSS values. 
-2. Take the median of all Pre-Trial Self Reported CPSS values.
-3. Take the mode of all Pre-Trial Self Reported CPSS values.
-4. Take the mean of all female control Pre-Trial Self Reported CPSS values.
-5. Take the median of all female control Pre-Trial Self Reported CPSS values.
-
-The following values were calculated for each option:
-1. 6.06
-2. 6.09
-3. 6.24
-4. 5.76
-5. 5.82
-
 ## Hypothesis
-Our hypothesis was that imputing data would provide results with a more varied outcome than data that was ignored.
+
+
+# Method
 
 ## Participants
 Participants of this experiment were young adults aged between 18 - 25 years old with no exact ages of the participants recorded. 150 participants were recorded in this study with an equal amount of male and female participants recorded. (Male = 75 / Female = 75)
 Participants were broken into 3 groups using random sampling. These groups were Control (traditional CBT, w/ No VR), Static (Non-animated model content, w/ VR), Animated (Animated model content, w/ VR)
 
 ## Design
+Upon first analysis of the data, a missing datum was found for participant 100 in their Pre-Trial Self Reported CPSS. Between the group, we discussed our options. Between ourselves, two conflicting ideas emerged - one, that we ignore the missing data and calculate results without it (deletion), and the other that we replace the missing data with a suitable value and proceed with an adjusted dataset (imputation).
+
+First we analysed the missing datum to be Missing Completely at Random (MCAR), as being the sole unrecorded datum in the set, we can conclude that it being missing has nothing to do with any other observed variables (data Missing at Random), or missing due to the values themselves (Missing Not at Random). 
+
+We then discussed how we could impute the missing datum. Based on research, we decided to use the mean of all Pre-Trial Self Reported CPSS values as the missing datum.
 
 ## Materials
 
@@ -200,35 +201,57 @@ result_sw_postor
 
 A `r result_sw_ptcpss$method` was conducted on each of the data sets
 
-pre trial CPSS data - `r round(result_sw_ptcpss$p.value, 4)`
+**Pre-trial CPSS SW Result =** `r round(result_sw_ptcpss$p.value, 4)`
 
-post trial CPSS data - `r round(result_sw_postcpss$p.value, 4)`
+**Post-trial CPSS SW Result =** `r round(result_sw_postcpss$p.value, 4)`
 
-pre trial OR data - `r round(result_sw_ptor$p.value, 4)`
+**Pre-trial OR SW Result =** `r round(result_sw_ptor$p.value, 4)`
 
-post trial OR data - `r round(result_sw_postor$p.value, 4)`
+**Post-trial OR SW Result =** `r round(result_sw_postor$p.value, 4)`
 
 
 From the output obtained we can assume normality for the pre and post trial CPSS as the p-value is greater than 0.05 while the OR data fails this normality test.  
 
+## Confidence Intervals
 ```{r Confidence Interval, include=FALSE}
 
 #perform 95% Confidence Interval test
 ci_error_precpss <- qt(0.975,df=length(patient_data$pre_trial_cpss)-1)*sd(patient_data$pre_trial_cpss)/sqrt(length(patient_data$pre_trial_cpss))
-
 ci_error_precpss_left <- mean(patient_data$pre_trial_cpss)-ci_error_precpss
-
 ci_error_precpss_right <- mean(patient_data$pre_trial_cpss)+ci_error_precpss
+
+ci_error_postcpss <- qt(0.975,df=length(patient_data$post_trial_cpss)-1)*sd(patient_data$post_trial_cpss)/sqrt(length(patient_data$post_trial_cpss))
+ci_error_postcpss_left <- mean(patient_data$post_trial_cpss)-ci_error_postcpss
+ci_error_postcpss_right <- mean(patient_data$post_trial_cpss)+ci_error_postcpss
+
+ci_error_preor <- qt(0.975,df=length(patient_data$pre_trial_or)-1)*sd(patient_data$pre_trial_or)/sqrt(length(patient_data$pre_trial_or))
+ci_error_preor_left <- mean(patient_data$pre_trial_or)-ci_error_preor
+ci_error_preor_right <- mean(patient_data$pre_trial_or)+ci_error_preor
+
+ci_error_postor <- qt(0.975,df=length(patient_data$post_trial_or)-1)*sd(patient_data$post_trial_or)/sqrt(length(patient_data$post_trial_or))
+ci_error_postor_left <- mean(patient_data$post_trial_or)-ci_error_postor
+ci_error_postor_right <- mean(patient_data$post_trial_or)+ci_error_postor
 
 
 ```
 
-95% confidence interval for pre trial CPSS  = (`r ci_error_precpss_left` , `r ci_error_precpss_right` )
+**95% CI for pre-trial CPSS =** (`r ci_error_precpss_left` , `r ci_error_precpss_right`)
+
+**95% CI for post-trial CPSS =** (`r ci_error_postcpss_left` , `r ci_error_postcpss_right`)
+
+**95% CI for pre-trial OR  =** (`r ci_error_preor_left` , `r ci_error_preor_right`)
+
+**95% CI for post-trial OR =** (`r ci_error_postor_left` , `r ci_error_postor_right`)
+
 
 
 ## Magnitude and direction of results
 
 # Discussion
+
+## Outline findings and relation to the hypothesis
+
+## Limitations (if confounding variables are clearly identified by your group)
 
 # References
 Help with getting mean of data while data is missing from column *[Stack Overflow](https://stackoverflow.com/questions/23163863/mean-of-a-column-in-a-data-frame-given-the-columns-name)
