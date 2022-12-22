@@ -108,14 +108,18 @@ plot(density(patient_data$pre_trial_or,na.rm = TRUE))
 plot(density(patient_data$post_trial_or,na.rm = TRUE))
 
 
+#Histogram
+hist(patient_data$pre_trial_cpss, xlim=c(0,10), ylim =c(0,60), breaks = 20, main = "Histogram - Pre Trial CPSS", xlab = "CPSS Values")
+hist(patient_data$post_trial_cpss, xlim=c(0,10), ylim =c(0,60), breaks = 20, main = "Histogram - Post Trial CPSS", xlab = "CPSS Values")
+hist(patient_data$pre_trial_or, xlim=c(0,10), ylim =c(0,60), breaks = 20, main = "Histogram - Pre Trial OR", xlab = "OR Values")
+hist(patient_data$post_trial_or, xlim=c(0,10), ylim =c(0,60), breaks = 20, main = "Histogram - Post Trial OR", xlab = "OR Values")
+
 #CPSS Static, Control, Animated
 plot(patient_data$pre_trial_cpss[1:50] ~ patient_data$post_trial_cpss[1:50], type="p",xlim = c(0,10), ylim = c(0,10), patient_data, main = "Self Reported Data - Static CPSS", xlab = "Pre-Trial Report", ylab = "Post Trial Report")
 
 plot(patient_data$pre_trial_cpss[51:100] ~ patient_data$post_trial_cpss[51:100], type="p",xlim = c(0,10), ylim = c(0,10), patient_data, main = "Self Reported Data - Control CPSS", xlab = "Pre-Trial Report", ylab = "Post Trial Report")
 
 plot(patient_data$pre_trial_cpss[101:150] ~ patient_data$post_trial_cpss[101:150], type="p",xlim = c(0,10), ylim = c(0,10), patient_data, main = "Self Reported Data - Animated CPSS", xlab = "Pre-Trial Report", ylab = "Post Trial Report")
-
-
 
 #OR Static, Control, Animated
 plot(patient_data$pre_trial_or[1:50] ~ patient_data$post_trial_or[1:50], type="p",xlim = c(0,10), ylim = c(0,10), patient_data, main = "Self Reported Data - Static OR", xlab = "Pre-Trial Report", ylab = "Post Trial Report")
@@ -246,6 +250,19 @@ ci_error_postor_right <- mean(patient_data$post_trial_or)+ci_error_postor
 
 
 ## Magnitude and direction of results
+
+```{r Regression, echo=FALSE}
+
+#Line of best fit for CPSS
+plot(patient_data$pre_trial_cpss[1:150] ~ patient_data$post_trial_cpss[1:150], type="p",xlim = c(0,10), ylim = c(0,10), patient_data, main = "Self Reported Data - Static CPSS", xlab = "Pre-Trial Report", ylab = "Post-Trial Report")
+abline(lm(patient_data$pre_trial_cpss[1:150]~patient_data$post_trial_cpss[1:150]))
+
+#Line of best fit for OR
+plot(patient_data$pre_trial_or[1:150] ~ patient_data$post_trial_or[1:150], type="p",xlim = c(0,10), ylim = c(0,10), patient_data, main = "Self Reported Data - Static OR", xlab = "Pre-Trial Report", ylab = "Post-Trial Report")
+abline(lm(patient_data$pre_trial_or[1:150]~patient_data$post_trial_or[1:150]))
+
+
+```
 
 # Discussion
 
