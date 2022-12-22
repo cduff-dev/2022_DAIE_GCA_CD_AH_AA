@@ -28,60 +28,68 @@ patient_data$pre_trial_cpss[is.na(patient_data$pre_trial_cpss)] <- mean(patient_
 # Abstract
 
 ## Aim and Rationale
-The aim and rationale of this project is to formulate a single hypothesis based on a set of data we were given on an experiment conducted to attempt to determine the effectiveness of use of VR technology in Jungian Sandbox therapy, comparing the effectiveness of the approaches based on the data we were provided, and cleaning up any data that requires cleanup. 
+The aim and rationale of this project is to formulate a single hypothesis based on a set of data we were given on an experiment conducted to attempt to determine the effectiveness of use of VR technology in Jungian Sandbox therapy, comparing the effectiveness of the approaches based on the data we were provided, and cleaning up any data that requires cleanup.
 
 ## Participants and setting
-Participants of this experiment were psychotherapy patients undergoing treatment for PTSD, aged between 18 - 25 years old with no exact ages of the participants recorded. 150 participants were recorded in this study with an equal amount of male and female participants recorded. (Male = 75 / Female = 75)
-Participants were broken into 3 groups using random sampling.These groups were Control (traditional CBT, w/ No VR), Static (Non-animated model content, w/ VR), Animated (Animated model content, w/ VR)
+Participants in the study are psychotherapy patients undergoing treatment for PTSD with Jungian Sandplay alongside a therapist, using either traditional Cognitive Behavioural Therapy or in a virtual reality environment.
 
 ## Experiment design
-Each patient spent 50 minutes per week for 12 weeks with a therapist, under three testing groups:
+Each participant spent 50 minutes per week for 12 weeks with a therapist, under three testing groups:
 
 **Control:**
-Undergoing traditional CBT with a therapist
+Undergoing traditional CBT with a therapist.
 
 **Static:**
-Using the VR app with non-animated model content
+Using the VR app with non-animated model content.
 
 **Animated:**
 Using the VR app with animated content. 
 
 
 ## Results gathering
-Results were tracked in an excel spreadsheet detailing the gender and test group of each participant (Control, Static, Animated) along with their CPSS (Child PTSD Symptom Scale) and OR (Observer Rating) pre and post treatment.
+Participants and their therapists were asked to rate their level of PTSD between 0-10 before and after their treatment, with 0 being no PTSD and 10 being the highest level of PTSD.
 
 ## Major findings
-We found that the average PTSD rating for each testing group decreased after treatment.
+We found that the average PTSD rating for each testing group decreased after treatment. Post-trial results were more widely dispersed than pre-trial results, leading us to conclude that the treatment was not as effective for some participants as others. Self-reported results are more correlated than observer-reported results, leading us to conclude that the treatment seemed more beneficial for participants than observers.
 
-## Findings/Implecations
-
+## Findings/Implications
+An outlier was discovered in the female control section of our data. This outlier's data could have affected our mean calculations for each set of data. Both post trials reports failed tests for normality showing a possibility of outliers being present in our data or clusters of specific values being found in our data.
 
 # Introduction
 
 ## Topic and context
+Jungian Sandplay is a psychotherapeutic method where participants play with sand and miniature objects to create an image that can reflect internal experiences and difficulties.
+Post-Traumatic Stress Disorder (PTSD) is a psychological condition caused by witnessing or experiencing an event or situation.
+Jungian Sandplay has been shown to decrease levels of PTSD in individuals.
 
 ## Rationale
-The Rationale behind this experiment was to determine if using VR technology in a Jungian Sandbox setting could be beneficial in reducing the PTSD levels in patients. 
+The Rationale behind this experiment was to determine if using Virtual Reality (VR) technology in a Jungian Sandbox setting could be beneficial in reducing the PTSD levels in patients.
 
 ## Hypothesis
+Our null hypothesis for this experiment is that post-trial values for OR results should correlate with post-trial CPSS results. This would infer that therapists observe as much of a benefit from the trial as the participant.
+
+Our alternate hypothesis is that OR values will not correlate with the CPSS values.
+
+Following tests done to check normality done to our data, we found that the post CPSS and OR values of the data were not normally distributed. This casts doubt on the quality of data collected for the post CPSS and OR values as outliers or skewed clusters could be present in our data causing us to reject our null hypothesis. Our dot plot shows a more positive correlation between pre and post-trial CPSS than pre and post-trial OR.
 
 
 # Method
 
 ## Participants
-Participants of this experiment were young adults aged between 18 - 25 years old with no exact ages of the participants recorded. 150 participants were recorded in this study with an equal amount of male and female participants recorded. (Male = 75 / Female = 75)
-Participants were broken into 3 groups using random sampling. These groups were Control (traditional CBT, w/ No VR), Static (Non-animated model content, w/ VR), Animated (Animated model content, w/ VR)
+Participants of this experiment were psychotherapy patients undergoing treatment for PTSD, aged between 18 - 25 years old with no exact ages of the participants recorded. 150 participants were recorded in this study with an equal amount of male and female participants recorded (Male = 75 / Female = 75).
+
+Participants were broken into 3 groups using random sampling. These groups were then assigned one of three testing groups (Control, Static, Animated).
 
 ## Design
-Upon first analysis of the data, a missing datum was found for participant 100 in their Pre-Trial Self Reported CPSS. Between the group, we discussed our options. Between ourselves, two conflicting ideas emerged - one, that we ignore the missing data and calculate results without it (deletion), and the other that we replace the missing data with a suitable value and proceed with an adjusted dataset (imputation).
-
-First we analysed the missing datum to be Missing Completely at Random (MCAR), as being the sole unrecorded datum in the set, we can conclude that it being missing has nothing to do with any other observed variables (data Missing at Random), or missing due to the values themselves (Missing Not at Random). 
-
-We then discussed how we could impute the missing datum. Based on research, we decided to use the mean of all Pre-Trial Self Reported CPSS values as the missing datum.
+Each participant had their level of PTSD rated between 0-10 both before and after their 12 weeks of treatment, assessed by themselves (Child PTSD Symptom Scale Seld Report - SR) and by their therapist (observer reported – OR). These results were collated in a CSV file tracking the participants’ gender, test group, pre and post-trial self-reported results, and pre and post-trial observer reported results.
 
 ## Materials
+The materials used for this experiment were the results of the pre and post-trials, both independently observed, and the results stemming from records by the therapists. Additionally, RStudio was used to collate all the data and information needed to be documented.
 
 ## Procedure
+Patients within this experiment underwent 12 weeks of Jungian sand play treatment. Results of this treatment were recorded at the start and end of this experiment. Results we compiled into four sections. The CPSS (Self report) and OR (Observed report) were recorded both pre and post this experiment.
+
+We imported the dataset into R studio and began running a series of tests to determine the validity of the data and to generate a hypothesis based on the data set we had been provided. Using imputation, we were able to resolve the missing data in our “pre_trial_ccpp” section by using the mean of that column to get a value to insert into that missing data. We calculated the mean, median, and standard deviation of the datasets along with graphing our datasets to better understand our data to help us formulate a hypothesis. We used the Shapiro wilk test to determine the normality of our dataset. We also calculated the 95% confidence interval for each of our datasets to help generate a more accurate representation of our true mean.
 
 # Results
 ```{r table, echo=FALSE}
@@ -192,6 +200,8 @@ pre_trial_or_std<- sd(patient_data$pre_trial_or)
 post_trial_or_std <- sd(patient_data$post_trial_or)
 
 ```
+After calculating the individual means for each of the groups of each data set (static pre_trial_or, control pre-trial_or) we determined that across all the data sets there is a consistent decrease in recorded PTSD levels of the patients post the experiment with a similar decrease in PTSD levels across each group (Control, Static, Animated).
+
 **CPSS Means (Static Pre/Post , Control Pre/Post, Animated Pre/Post)**
 
 Static Pre trial CPSS Mean = `r pre_trial_cpss_meanStatic`
@@ -274,8 +284,8 @@ Pre trial OR Standard Deviation = `r pre_trial_or_std`
 
 Post trial OR Standard Deviation = `r post_trial_or_std`
 
-
 ## Inferential statistics
+If the participants in this study are an accurate reflection of 18-25 year olds in treatment for PTSD, we can infer that traditional CBT therapy as well the Jungian Sandplay VR app can reduce self-reported levels of PTSD for people with similar attributes in a general population.
 
 ## Statistical tests
 ```{r Shapiro-Wilk, include=FALSE}
@@ -292,6 +302,7 @@ result_sw_postor
 
 
 ```
+From the overlaid density plots we can see a strong correlation between the post-trial results, whereas the pre-trial results are more varied between reports.
 
 A `r result_sw_ptcpss$method` was conducted on each of the data sets
 
@@ -358,14 +369,22 @@ points(patient_data$pre_trial_or[1:150] ~ patient_data$post_trial_or[1:150], col
 
 ```
 
-By plotting the pre- and post-trial CPSS against one another and the pre- and post-trial OR against one another we can see the CPSS values have a more positive association with one another. The OR values lack this association and appear to be more dispersed and random than the CPSS values.
-
+## red blue dot plot
+By plotting the pre- and post-trial CPSS against one another and the pre- and post-trial OR against one another we can see the. CPSS values have a more positive association with one another. The OR values lack this association and appear to be more dispersed and random than the CPSS values.
 
 # Discussion
 
 ## Outline findings and relation to the hypothesis
+Our null hypothesis for this experiment is that post-trial values for OR results should correlate with post-trial CPSS results. This would infer that therapists observe as much of a benefit from the trial as the participant.
+
+Our alternate hypothesis is that OR values will not correlate with the CPSS values.
+
+The results of our Shapiro-Wilkes test proved that the Pre-Trial results were normalised, while the post-trial results were not. Our dot plots also visually confirmed that the OR results did not align with the CPSS results. This goes against our null hypothesis that post-trial OR values should correlate with post-trial CPSS results.
+
+Because of these results, we decided that our alternate hypothesis was correct.
 
 ## Limitations (if confounding variables are clearly identified by your group)
+The initial decision to impute the missing values instead of ignoring them could have led to a different set of results. However, the outcome of the experiment would likely stay the same.
 
 # References
 Help with getting mean of data while data is missing from column *[Stack Overflow](https://stackoverflow.com/questions/23163863/mean-of-a-column-in-a-data-frame-given-the-columns-name)
