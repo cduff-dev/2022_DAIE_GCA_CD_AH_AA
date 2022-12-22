@@ -116,9 +116,6 @@ hist(patient_data$post_trial_cpss, xlim=c(0,10), ylim =c(0,60), breaks = 20, mai
 hist(patient_data$pre_trial_or, xlim=c(0,10), ylim =c(0,60), breaks = 20, main = "Histogram - Pre Trial OR", xlab = "OR Values")
 hist(patient_data$post_trial_or, xlim=c(0,10), ylim =c(0,60), breaks = 20, main = "Histogram - Post Trial OR", xlab = "OR Values")
 
-#Entire Dataset
-plot(patient_data$pre_trial_cpss[1:150] ~ patient_data$post_trial_cpss[1:150], type="p",xlim = c(0,10), ylim = c(0,10), patient_data, main = "Scatter Plot of entire dataset", xlab = "Pre-Trial Report", ylab = "Post Trial Report", col="red", sub = "Red = CPSS, Blue = OR", cex = .5)
-points(patient_data$pre_trial_or[1:150] ~ patient_data$post_trial_or[1:150], col="blue", cex = .5)
 
 #CPSS Control, Static, Animated
 
@@ -140,6 +137,7 @@ plot(patient_data$pre_trial_or[101:150] ~ patient_data$post_trial_or[101:150], t
 
 ## Descriptive statistics
 ```{r DesStats, include=FALSE}
+# Getting Static , Control, and Animed Mean(s) for CPSS Dataset
 pre_trial_cpss_meanStatic <- mean(patient_data$pre_trial_cpss[1:50],na.rm = TRUE )
 post_trial_cpss_meanStatic <- mean(patient_data$post_trial_cpss[1:50],na.rm = TRUE )
 
@@ -150,7 +148,7 @@ pre_trial_cpss_meanAnimated <- mean(patient_data$pre_trial_cpss[101:150],na.rm =
 post_trial_cpss_meanAnimated <- mean(patient_data$post_trial_cpss[101:150],na.rm = TRUE )
 
 
-
+# Getting Static , Control, and Animed Mean(s) for OR Dataset
 pre_trial_or_meanStatic <- mean(patient_data$pre_trial_or[1:50],na.rm = TRUE )
 post_trial_or_meanStatic <- mean(patient_data$post_trial_or[1:50],na.rm = TRUE )
 
@@ -160,37 +158,121 @@ post_trial_or_meanControl <- mean(patient_data$post_trial_or[51:100],na.rm = TRU
 pre_trial_or_meanAnimated <- mean(patient_data$pre_trial_or[101:150],na.rm = TRUE )
 post_trial_or_meanAnimated <- mean(patient_data$post_trial_or[101:150],na.rm = TRUE )
 
+## Getting Static , Control, and Animated Standard Deviations for CPSS Dataset
+pre_trial_cpss_stdStatic <- sd(patient_data$pre_trial_cpss[1:50],na.rm = TRUE )
+post_trial_cpss_stdStatic <- sd(patient_data$post_trial_cpss[1:50],na.rm = TRUE )
 
+pre_trial_cpss_stdControl <- sd(patient_data$pre_trial_cpss[51:100],na.rm = TRUE )
+post_trial_cpss_stdControl <- sd(patient_data$post_trial_cpss[51:100],na.rm = TRUE )
+
+pre_trial_cpss_stdAnimated <- sd(patient_data$pre_trial_cpss[101:150],na.rm = TRUE )
+post_trial_cpss_stdAnimated <- sd(patient_data$post_trial_cpss[101:150],na.rm = TRUE )
+
+
+## Getting Static , Control, and Animated Standard Deviations for OR Dataset
+pre_trial_or_stdStatic <- sd(patient_data$pre_trial_or[1:50],na.rm = TRUE )
+post_trial_or_stdStatic <- sd(patient_data$post_trial_or[1:50],na.rm = TRUE )
+
+pre_trial_or_stdControl <- sd(patient_data$pre_trial_or[51:100],na.rm = TRUE )
+post_trial_or_stdControl <- sd(patient_data$post_trial_or[51:100],na.rm = TRUE )
+
+pre_trial_or_stdAnimated <- sd(patient_data$pre_trial_or[101:150],na.rm = TRUE )
+post_trial_or_stdAnimated <- sd(patient_data$post_trial_or[101:150],na.rm = TRUE )
+
+# Getting Mean for CPSS and OR Dataset
+pre_trial_cpss_mean <- mean(patient_data$pre_trial_cpss,na.rm = TRUE )
+post_trial_cpss_mean <- mean(patient_data$post_trial_cpss)
+pre_trial_or_mean<- mean(patient_data$pre_trial_or)
+post_trial_or_mean <- mean(patient_data$post_trial_or)
+
+# Getting Standard Deviation for CPSS and OR Dataset
 pre_trial_cpss_std <- sd(patient_data$pre_trial_cpss,na.rm = TRUE )
 post_trial_cpss_std <- sd(patient_data$post_trial_cpss)
 pre_trial_or_std<- sd(patient_data$pre_trial_or)
 post_trial_or_std <- sd(patient_data$post_trial_or)
 
 ```
-Static Pre trial cpss mean = `r pre_trial_cpss_meanStatic`
+**CPSS Means (Static Pre/Post , Control Pre/Post, Animated Pre/Post)**
 
-Static Post trial cpss mean = `r post_trial_cpss_meanStatic`
+Static Pre trial CPSS Mean = `r pre_trial_cpss_meanStatic`
 
-Control Pre trial cpss mean = `r pre_trial_cpss_meanControl`
+Static Post trial CPSS Mean = `r post_trial_cpss_meanStatic`
 
-Control Post trial cpss mean = `r post_trial_cpss_meanControl`
+Control Pre trial CPSS Mean = `r pre_trial_cpss_meanControl`
 
-Animated Pre trial cpss mean = `r pre_trial_cpss_meanAnimated`
+Control Post trial CPSS Mean = `r post_trial_cpss_meanControl`
 
-Animated Post trial cpss mean = `r post_trial_cpss_meanAnimated`
+Animated Pre trial CPSS Mean = `r pre_trial_cpss_meanAnimated`
+
+Animated Post trial CPSS Mean = `r post_trial_cpss_meanAnimated`
 
 
-Static Pre trial or mean = `r pre_trial_or_meanStatic`
+**OR Means (Static Pre/Post , Control Pre/Post, Animated Pre/Post)**
 
-Static Post trial or mean = `r post_trial_or_meanStatic`
+Static Pre trial OR Mean = `r pre_trial_or_meanStatic`
 
-Control Pre trial or mean = `r pre_trial_or_meanControl`
+Static Post trial OR Mean = `r post_trial_or_meanStatic`
 
-Control Post trial or mean = `r post_trial_or_meanControl`
+Control Pre trial OR Mean = `r pre_trial_or_meanControl`
 
-Animated Pre trial or mean = `r pre_trial_or_meanAnimated`
+Control Post trial OR Mean = `r post_trial_or_meanControl`
 
-Animated Post trial or mean = `r post_trial_or_meanAnimated`
+Animated Pre trial OR Mean = `r pre_trial_or_meanAnimated`
+
+Animated Post trial OR Mean = `r post_trial_or_meanAnimated`
+
+
+**CPSS Standard Deviation (Static Pre/Post , Control Pre/Post, Animated Pre/Post)**
+
+Static Pre trial CPSS Standard Deviation = `r pre_trial_cpss_stdStatic`
+
+Static Post trial CPSS Standard Deviation = `r post_trial_cpss_stdStatic`
+
+Control Pre trial CPSS Standard Deviation = `r pre_trial_cpss_stdControl`
+
+Control Post trial CPSS Standard Deviation = `r post_trial_cpss_stdControl`
+
+Animated Pre trial CPSS Standard Deviation = `r pre_trial_cpss_stdAnimated`
+
+Animated Post trial CPSS Standard Deviation = `r post_trial_cpss_stdAnimated`
+
+**OR Standard Deviation (Static Pre/Post , Control Pre/Post, Animated Pre/Post)**
+
+Static Pre trial OR Standard Deviation = `r pre_trial_or_stdStatic`
+
+Static Post trial OR Standard Deviation = `r post_trial_or_stdStatic`
+
+Control Pre trial OR Standard Deviation = `r pre_trial_or_stdControl`
+
+Control Post trial OR Standard Deviation = `r post_trial_or_stdControl`
+
+Animated Pre trial OR Standard Deviation = `r pre_trial_or_stdAnimated`
+
+Animated Post trial OR Standard Deviation = `r post_trial_or_stdAnimated`
+
+**CPSS Mean (Pre/Post-trial)**
+
+Pre trial CPSS Mean = `r pre_trial_cpss_mean`
+
+Post trial CPSS Mean = `r post_trial_cpss_mean`
+
+**OR Mean (Pre/Post-trial)**
+
+Pre trial OR Mean = `r pre_trial_or_mean`
+
+Post trial OR Mean = `r post_trial_or_mean`
+
+**CPSS Standard Deviation (Pre/Post-trial)**
+
+Pre trial CPSS Standard Deviation = `r pre_trial_cpss_std`
+
+Post trial CPSS Standard Deviation = `r post_trial_cpss_std`
+
+**OR Standard Deviation  (Pre/Post-trial)**
+
+Pre trial OR Standard Deviation = `r pre_trial_or_std`
+
+Post trial OR Standard Deviation = `r post_trial_or_std`
 
 
 ## Inferential statistics
@@ -269,8 +351,15 @@ abline(lm(patient_data$pre_trial_cpss[1:150]~patient_data$post_trial_cpss[1:150]
 plot(patient_data$pre_trial_or[1:150] ~ patient_data$post_trial_or[1:150], type="p",xlim = c(0,10), ylim = c(0,10), patient_data, main = "Observer Reported Data", xlab = "Pre-Trial Report", ylab = "Post-Trial Report")
 abline(lm(patient_data$pre_trial_or[1:150]~patient_data$post_trial_or[1:150]))
 
+#Entire Dataset
+plot(patient_data$pre_trial_cpss[1:150] ~ patient_data$post_trial_cpss[1:150], type="p",xlim = c(0,10), ylim = c(0,10), patient_data, main = "Scatter Plot of entire dataset", xlab = "Pre-Trial Report", ylab = "Post Trial Report", col="red", sub = "Red = CPSS, Blue = OR", cex = .5)
+points(patient_data$pre_trial_or[1:150] ~ patient_data$post_trial_or[1:150], col="blue", cex = .5)
+
 
 ```
+
+By plotting the pre- and post-trial CPSS against one another and the pre- and post-trial OR against one another we can see the CPSS values have a more positive association with one another. The OR values lack this association and appear to be more dispersed and random than the CPSS values.
+
 
 # Discussion
 
