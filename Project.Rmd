@@ -283,3 +283,5 @@ First 10 entries in a bar plot
 *[StackOverflow](https://stackoverflow.com/questions/37524701/how-do-i-barplot-only-the-first-10-entries-in-a-frequency-table-in-r)
 
 Calculate confidence interval *[Cyclismo](https://www.cyclismo.org/tutorial/R/confidence.html)
+
+How to Create a Scatterplot with a Regression Line in R? *[GeeksforGeeks](https://www.geeksforgeeks.org/how-to-create-a-scatterplot-with-a-regression-line-in-r/)
