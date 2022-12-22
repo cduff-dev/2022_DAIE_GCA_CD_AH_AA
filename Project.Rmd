@@ -117,7 +117,14 @@ plot(density(patient_data$post_trial_cpss,na.rm = TRUE), main = "Post-Trial CPSS
 plot(density(patient_data$pre_trial_or,na.rm = TRUE), main = "Pre-Trial OR results", xlim =c(0,10), ylim=c(0,0.5))
 plot(density(patient_data$post_trial_or,na.rm = TRUE), main = "Post-Trial OR results", xlim =c(0,10), ylim=c(0,0.5))
 
+plot(density(patient_data$pre_trial_cpss,na.rm = TRUE), main = "Density plot of each dataset", sub = "RED = Pre-CPSS, GRN = Pre-OR, PUR = Post-CPSS, BLU = Post-OR", xlim =c(0,10), ylim=c(0,0.5), col="red")
+lines(density(patient_data$post_trial_cpss,na.rm = TRUE), col = "purple" )
+lines(density(patient_data$pre_trial_or,na.rm = TRUE), col = "green")
+lines(density(patient_data$post_trial_or,na.rm = TRUE), col = "blue")
+```
+In this graph 'Bandwidth' only applies to the red line.
 
+```{r Graphs2, echo=FALSE}
 #Histogram
 hist(patient_data$pre_trial_cpss, xlim=c(0,10), ylim =c(0,60), breaks = 20, main = "Histogram - Pre Trial CPSS", xlab = "CPSS Values")
 hist(patient_data$post_trial_cpss, xlim=c(0,10), ylim =c(0,60), breaks = 20, main = "Histogram - Post Trial CPSS", xlab = "CPSS Values")
@@ -285,7 +292,7 @@ Pre trial OR Standard Deviation = `r pre_trial_or_std`
 Post trial OR Standard Deviation = `r post_trial_or_std`
 
 ## Inferential statistics
-If the participants in this study are an accurate reflection of 18-25 year olds in treatment for PTSD, we can infer that traditional CBT therapy as well the Jungian Sandplay VR app can reduce self-reported levels of PTSD for people with similar attributes in a general population.
+If the participants in this study are an accurate reflection of 18-25 year olds in treatment for PTSD, we can infer that traditional CBT therapy as well the Jungian Sandplay VR app can reduce self-reported levels of PTSD for people with similar attributes in a general population.
 
 ## Statistical tests
 ```{r Shapiro-Wilk, include=FALSE}
@@ -302,7 +309,6 @@ result_sw_postor
 
 
 ```
-From the overlaid density plots we can see a strong correlation between the post-trial results, whereas the pre-trial results are more varied between reports.
 
 A `r result_sw_ptcpss$method` was conducted on each of the data sets
 
@@ -315,7 +321,10 @@ A `r result_sw_ptcpss$method` was conducted on each of the data sets
 **Post-trial OR SW Result =** `r round(result_sw_postor$p.value, 4)`
 
 
-From the output obtained we can assume normality for the pre and post trial CPSS as the p-value is greater than 0.05 while the OR data fails this normality test.  
+From the output obtained we can assume normality for both pre-trial results as the p-values are greater than 0.05, while both post-trial results fail this normality test as they are less than 0.05. 
+
+From the 'Density plot of each dataset' graph we can see a strong correlation between the post-trial results, whereas the pre-trial results are more varied between reports.
+
 
 ## Confidence Intervals
 ```{r Confidence Interval, include=FALSE}
@@ -369,13 +378,12 @@ points(patient_data$pre_trial_or[1:150] ~ patient_data$post_trial_or[1:150], col
 
 ```
 
-## red blue dot plot
-By plotting the pre- and post-trial CPSS against one another and the pre- and post-trial OR against one another we can see the. CPSS values have a more positive association with one another. The OR values lack this association and appear to be more dispersed and random than the CPSS values.
+By plotting the pre- and post-trial CPSS against one another and the pre- and post-trial OR against one another we can see the CPSS values have a more positive association with one another. The OR values lack this association and appear to be more dispersed and random than the CPSS values.
 
 # Discussion
 
 ## Outline findings and relation to the hypothesis
-Our null hypothesis for this experiment is that post-trial values for OR results should correlate with post-trial CPSS results. This would infer that therapists observe as much of a benefit from the trial as the participant.
+Our null hypothesis for this experiment is that post-trial values for OR results should correlate with post-trial CPSS results. This would infer that therapists observe as much of a benefit from the trial as the participant.
 
 Our alternate hypothesis is that OR values will not correlate with the CPSS values.
 
@@ -383,7 +391,7 @@ The results of our Shapiro-Wilkes test proved that the Pre-Trial results were no
 
 Because of these results, we decided that our alternate hypothesis was correct.
 
-## Limitations (if confounding variables are clearly identified by your group)
+## Limitations
 The initial decision to impute the missing values instead of ignoring them could have led to a different set of results. However, the outcome of the experiment would likely stay the same.
 
 # References
